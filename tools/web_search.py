@@ -4,6 +4,15 @@ from ast import literal_eval
 
 def load_from_config(cfg=None):
     def web_search_tool(query=None, multi=False):
+        """
+        tool name: web_search
+
+        Arguments:
+          web_search(str): the search term
+
+        Description:
+          Searches Google and summarizes content from top results.
+        """
         results = []
         urls = list(search(query, num_results=5))
         for url in urls:

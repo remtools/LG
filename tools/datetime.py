@@ -3,12 +3,14 @@ import dateutil.parser
 
 def load_from_config(cfg=None):
     def datetime_tool(query=None):
-        """ 
+        """
         tool name: datetime
-        Arguments
+        Arguments:
             "now" → returns current datetime
             "%Y-%m-%d" → returns current date in format
-            "2025-07-04"  → returns day of the week of the specified date
+            "2025-07-04"  → returns day of the week
+
+        To invoke: Calling: datetime("now")
         """
         if not query or query.lower() == "now":
             return datetime.now().isoformat()

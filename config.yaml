@@ -19,7 +19,7 @@ agents:
     llm: localllm
     tools: [web_search, datetime]
     system_prompt: |
-      You are a fact-checking research agent. Use tools only when necessary.
+      You are a fact-checking research agent.
     max_steps: 3
     retry_on_fail: false
 
@@ -34,7 +34,3 @@ agents:
 graphs:
   main_flow:
     type: main_flow
-    entry: researcher
-    edges:
-      - [researcher, writer]
-      - [writer, END]
