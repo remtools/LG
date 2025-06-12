@@ -6,7 +6,7 @@ from registry import get_component
 graph = get_component("graph", "main_flow")
 
 # Provide initial state
-initial_state = {"input": "Use the web_search tool to look up 'latest news in AI today"}
+initial_state = {"input": "whats the new on goa medical college goa today"}
 
 print("Sending initial state:", initial_state)
 
