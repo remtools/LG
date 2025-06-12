@@ -1,23 +1,40 @@
-graphs:
-  main_flow:
-    type: main_flow
+# config.yaml
+
 llms:
   localllm:
     type: ollama
     model: llama3.2:3b
 
-agents:
-  lyrics_finder:
-    type: researcher
-    llm: localllm
-    tools:
-        - web_search
-  writer:
-    type: writer
-    llm: localllm
-
 tools:
   web_search:
     type: web_search
+    timeout: 5
+
   datetime:
     type: datetime
+
+agents:
+  researcher:
+    type: simple
+    llm: localllm
+    tools: [web_search, datetime]
+    system_prompt: |
+      You are a fact-checking research agent. Use tools only when necessary.
+    max_steps: 3
+    retry_on_fail: false
+
+  writer:
+    type: simple
+    llm: localllm
+    tools: []
+    system_prompt: |
+      You are a professional writer. Turn the research content into well-structured prose.
+    max_steps: 2
+
+graphs:
+  main_flow:
+    type: main_flow
+    entry: researcher
+    edges:
+      - [researcher, writer]
+      - [writer, END]
