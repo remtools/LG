@@ -1,0 +1,23 @@
+graphs:
+  main_flow:
+    type: main_flow
+llms:
+  localllm:
+    type: ollama
+    model: llama3.2:3b
+
+agents:
+  lyrics_finder:
+    type: researcher
+    llm: localllm
+    tools:
+        - web_search
+  writer:
+    type: writer
+    llm: localllm
+
+tools:
+  web_search:
+    type: web_search
+  datetime:
+    type: datetime
