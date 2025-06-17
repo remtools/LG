@@ -24,7 +24,8 @@ def build_graph(cfg=None):
         builder.add_node(name, agents[name])
 
     # Static edges (for now) — or make this dynamic later
-    builder.set_entry_point(graph_cfg.get("entry", "researcher"))
+    builder.set_entry_point(graph_cfg.get("entry", "datechecker"))
+    builder.set_entry_point(graph_cfg.get("datechecker", "researcher"))
     builder.add_edge("researcher", "writer")
     builder.add_edge("writer", END)
 

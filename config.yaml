@@ -14,12 +14,21 @@ tools:
     type: datetime
 
 agents:
+  datechecker:
+    type: simple
+    llm: localllm
+    tools: [datetime]
+    system_prompt: |
+      You are a date checker. retrive and establish today's date.
+    max_steps: 3
+    retry_on_fail: false
+    
   researcher:
     type: simple
     llm: localllm
-    tools: [web_search, datetime]
+    tools: [web_search]
     system_prompt: |
-      You are a fact-checking research agent.
+      You are a research agent. search online and check everything based on today's date
     max_steps: 3
     retry_on_fail: false
 
